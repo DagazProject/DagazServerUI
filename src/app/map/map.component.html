@@ -3,7 +3,10 @@
         <a *ngIf="it.variant_id" href="launch/{{it.id}}/{{it.variant_id}}">
             <img src="api/upload/{{it.preview}}.png">
         </a>
-        <a *ngIf="!it.variant_id" href="launch/{{it.id}}">
+        <a *ngIf="!it.variant_id && it.filename" href="launch/{{it.id}}">
+            <img src="api/upload/{{it.preview}}.png">
+        </a>
+        <a *ngIf="!it.filename" href="map/{{it.id}}">
             <img src="api/upload/{{it.preview}}.png">
         </a>
         <p>

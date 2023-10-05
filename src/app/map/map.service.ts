@@ -9,7 +9,7 @@ export class MapService {
 
   constructor(private http: HttpClient) { }
 
-  getGames(): Observable<Object> {
-    return this.http.get(this.url);
+  getGames(id: number): Observable<Object> {
+    return this.http.get(this.url + '/' + id);
   } 
 }

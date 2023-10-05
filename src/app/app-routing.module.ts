@@ -14,7 +14,7 @@ import { TournComponent } from './tourn/tourn.component';
 const routes: Routes = [
   { path: '', component: AuthComponent },
   { path: 'reg', component: RegComponent },
-  { path: 'map', component: MapComponent },
+  { path: 'map/:v', component: MapComponent },
   { path: 'launch/:g/:v/:s', component: LaunchComponent, canActivate: [JwtGuard] },
   { path: 'launch/:g/:v', component: LaunchComponent, canActivate: [JwtGuard] },
   { path: 'launch/:g', component: LaunchComponent, canActivate: [JwtGuard] },
