@@ -9,7 +9,13 @@
         <a *ngIf="!it.filename" href="map/{{it.id}}">
             <img src="api/upload/{{it.preview}}.png">
         </a>
-        <p>
+        <p *ngIf="!it.filename">
+            <a *ngIf="it.rules" target="_blank" href="{{it.rules}}">
+                <b>{{it.name}} ...</b>
+            </a>
+            <b *ngIf="!it.rules">{{it.name}} ...</b>
+        </p>
+        <p *ngIf="it.filename">
             <a *ngIf="it.rules" target="_blank" href="{{it.rules}}">
                 <b>{{it.name}}</b>
             </a>
