@@ -9,7 +9,9 @@ export class User {
       public email: string,
       public created: Date,
       public deleted: Date,
-      public last_actived: Date
+      public last_actived: Date,
+      public device: string,
+      public flags: number
     ) {}
   }
   

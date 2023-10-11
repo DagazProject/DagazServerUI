@@ -30,7 +30,8 @@ export class ProfileComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.minLength(6)],
       confirm: [''],
-      mail: ['', [Validators.email]]
+      mail: ['', [Validators.email]],
+      flags: [''],
       }, {
         validator: MustMatch('password', 'confirm')
       }
@@ -46,6 +47,7 @@ export class ProfileComponent implements OnInit {
       this.f.fio.setValue(data.name);
       this.f.username.setValue(data.username);
       this.f.mail.setValue(data.email);
+      this.f.flags.setValue(data.flags & 1);
     },
     (error: any) => {
       let status = error.status;
@@ -71,7 +73,7 @@ export class ProfileComponent implements OnInit {
     }
     this.serv.changeProfile(this.id, this.registerForm.value).subscribe(
       (data: any) => {
-        alert("Changes saved");
+        if (!(Number(localStorage.getItem('myFlags')) & 1)) alert("Changes saved");
       },
       (error: any) => {
         let status = error.status;

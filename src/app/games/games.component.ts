@@ -162,7 +162,7 @@ export class GamesComponent implements OnInit {
   }
     
   public delete(it: Session) {
-    if (!confirm("Delele Session?")) return;
+    if (!(Number(localStorage.getItem('myFlags')) & 1) && !confirm("Delele Session?")) return;
     const s = this.serv.delSessions(it.id).subscribe((data: Session) => {
       this.loadSessions();
     },

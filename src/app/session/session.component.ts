@@ -145,7 +145,7 @@ export class SessionComponent implements OnInit {
 
   public join(it: Session) {
     if (this.scope == 1) {
-      if (!confirm("Join to Session?")) return;
+      if (!(Number(localStorage.getItem('myFlags')) & 1) && !confirm("Join to Session?")) return;
       this.serv.joinToSession(it.id).subscribe((data: Join) => {
         this.loadSessions();
         this.launch(it, data.filename);
@@ -183,7 +183,7 @@ export class SessionComponent implements OnInit {
   }
     
   public delete(it: Session) {
-    if (!confirm("Delele Session?")) return;
+    if (!(Number(localStorage.getItem('myFlags')) & 1) && !confirm("Delele Session?")) return;
     const s = this.serv.delSessions(it.id).subscribe((data: Session) => {
       this.loadSessions();
     },
@@ -198,7 +198,7 @@ export class SessionComponent implements OnInit {
   }
 
   public protect(it: Session) {
-    if (!confirm("Protect Session?")) return;
+    if (!(Number(localStorage.getItem('myFlags')) & 1) && !confirm("Protect Session?")) return;
     const s = this.serv.protectSession(it.id).subscribe((data: Session) => {
       this.loadSessions();
     },

@@ -338,7 +338,7 @@ export class LaunchComponent implements OnInit {
   }
 
   public submit() {
-    if (!confirm("Launch the game?")) return;
+    if (!(Number(localStorage.getItem('myFlags')) & 1) && !confirm("Launch the game?")) return;
     const g: Game = this.getGame();
     if (!g) return;
     this.serv.createSession(this.curr_game, g.filename, this.selector, this.player_num, this.curr_var, this.ai_selected, this.timecontrol_id).subscribe((data: Session) => {

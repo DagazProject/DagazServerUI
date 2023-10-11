@@ -49,7 +49,7 @@ export class MembersComponent implements OnInit {
   }
 
   join() {
-    if (!confirm("Join to Tournament?")) {
+    if (!(Number(localStorage.getItem('myFlags')) & 1) && !confirm("Join to Tournament?")) {
       this.loadMembers();
       return;
     }
@@ -106,7 +106,7 @@ export class MembersComponent implements OnInit {
   }
 
   public delete(it: Member) {
-    if (!confirm("Delete Member?")) return;
+    if (!(Number(localStorage.getItem('myFlags')) & 1) && !confirm("Delete Member?")) return;
     console.log(it);
     this.serv.delMember(it.id).subscribe(
       (data: Member) => {

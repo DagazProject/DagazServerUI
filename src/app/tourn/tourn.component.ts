@@ -122,7 +122,7 @@ export class TournComponent implements OnInit {
   }
 
   public join(it: Tourn) {
-    if (!confirm("Join to Tournament?")) return;
+    if (!(Number(localStorage.getItem('myFlags')) & 1) && !confirm("Join to Tournament?")) return;
     this.serv.joinToTourn(it.id).subscribe(
       (data: Tourn) => {
         this.loadTurns();
@@ -139,7 +139,7 @@ export class TournComponent implements OnInit {
   }
 
   public delete(it: Tourn) {
-    if (!confirm("Delete Tournament?")) return;
+    if (!(Number(localStorage.getItem('myFlags')) & 1) && !confirm("Delete Tournament?")) return;
     this.serv.delTourn(it.id).subscribe(
       (data: Tourn) => {
         this.loadTurns();
@@ -156,7 +156,7 @@ export class TournComponent implements OnInit {
   }
 
   public close(it: Tourn) {
-    if (!confirm("Close Tournament?")) return;
+    if (!(Number(localStorage.getItem('myFlags')) & 1) && !confirm("Close Tournament?")) return;
     this.serv.closeTourn(it.id).subscribe(
       (data: Tourn) => {
         this.loadTurns();

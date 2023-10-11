@@ -56,6 +56,7 @@ export class AuthComponent implements OnInit {
         localStorage.setItem('myAuthToken', data.access_token);
         localStorage.setItem('myRole', data.role);
         localStorage.setItem('myId', data.user_id);
+        localStorage.setItem('myFlags', data.flags);
         const url = localStorage.getItem('currGame');
         if (url) {
           localStorage.setItem('currGame', 'launch');
