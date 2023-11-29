@@ -6,16 +6,16 @@
         <a *ngIf="!it.variant_id && it.filename" href="launch/{{it.id}}">
             <img src="api/upload/{{it.preview}}.png">
         </a>
-        <a *ngIf="!it.filename" href="map/{{it.id}}">
+        <a *ngIf="!it.filename && id" href="map/{{it.id}}">
             <img src="api/upload/{{it.preview}}.png">
         </a>
-        <p *ngIf="!it.filename">
+        <p *ngIf="!it.filename && id">
             <a *ngIf="it.rules" target="_blank" href="{{it.rules}}">
                 <b>{{it.name}} ...</b>
             </a>
             <b *ngIf="!it.rules">{{it.name}} ...</b>
         </p>
-        <p *ngIf="it.filename">
+        <p *ngIf="it.filename || !id">
             <a *ngIf="it.rules" target="_blank" href="{{it.rules}}">
                 <b>{{it.name}}</b>
             </a>

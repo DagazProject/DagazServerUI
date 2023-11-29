@@ -9,6 +9,10 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  ticket(t: string): Observable<Object> {
+    return this.http.get(this.url + 'ticket/' + t);
+  }
+
   auth(login: string, pass: string): Observable<Object> {
     return this.http.post(this.url + 'login', {"username": login, "password": pass, "realm": 2});
   }

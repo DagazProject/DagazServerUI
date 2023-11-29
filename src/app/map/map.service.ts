@@ -10,6 +10,10 @@ export class MapService {
   constructor(private http: HttpClient) { }
 
   getGames(id: number): Observable<Object> {
-    return this.http.get(this.url + '/' + id);
+    let s = this.url;
+    if (id) {
+        s = s + '/' + id;
+    }
+    return this.http.get(s);
   } 
 }
