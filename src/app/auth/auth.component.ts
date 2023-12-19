@@ -45,7 +45,11 @@ export class AuthComponent implements OnInit {
             }
           },
           (error: any) => {
-            this.router.navigate(['']);
+            if (this.canRecovery()) {
+                this.recovery();
+            } else {
+                this.router.navigate(['']);
+            }
           }
         );
     }
@@ -68,7 +72,11 @@ export class AuthComponent implements OnInit {
         console.log("Access Token [" + data.access_token + "]");
         localStorage.setItem('myAuthToken', data.access_token);
         localStorage.setItem('myRole', data.role);
-        this.router.navigate(['profile']);
+        if (this.url && this.sid) {
+            window.location = 'dagaz/' + this.url +'?sid=' + this.sid;
+        } else {
+            this.router.navigate(['profile']);
+        }
       },
       (error: any) => {
         alert("Password recovery failed");
