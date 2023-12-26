@@ -41,7 +41,7 @@ export class AuthComponent implements OnInit {
             if (this.url && this.sid) {
               window.location = 'dagaz/' + this.url +'?sid=' + this.sid;
             } else {
-              this.router.navigate(['map/0']);
+              this.router.navigate(['session/2']);
             }
           },
           (error: any) => {
