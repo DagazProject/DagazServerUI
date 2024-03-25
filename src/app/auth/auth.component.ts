@@ -48,7 +48,7 @@ export class AuthComponent implements OnInit {
             if (this.canRecovery()) {
                 this.recovery();
             } else {
-                this.router.navigate(['']);
+                this.router.navigate(['auth']);
             }
           }
         );

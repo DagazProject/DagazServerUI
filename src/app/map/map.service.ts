@@ -13,6 +13,8 @@ export class MapService {
     let s = this.url;
     if (id) {
         s = s + '/' + id;
+    } else {
+        s = s + '/0';
     }
     return this.http.get(s);
   } 

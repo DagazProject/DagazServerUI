@@ -51,7 +51,7 @@ export class SessionComponent implements OnInit {
       (error: any) => {
         let status = error.status;
         if ([401, 403].includes(status)) {
-          this.router.navigate(['']);
+          this.router.navigate(['auth']);
         } else {
           alert("Error: " + status);
         }
@@ -136,7 +136,7 @@ export class SessionComponent implements OnInit {
     (error: any) => {
       let status = error.status;
       if ([401, 403].includes(status)) {
-        this.router.navigate(['']);
+        this.router.navigate(['auth']);
       } else {
         alert("Error: " + status);
       }
@@ -154,7 +154,7 @@ export class SessionComponent implements OnInit {
         let status = error.status;
         if (status == 404) return;
         if ([401, 403].includes(status)) {
-          this.router.navigate(['']);
+          this.router.navigate(['auth']);
         } else {
           alert("Error: " + status);
         }
@@ -190,7 +190,7 @@ export class SessionComponent implements OnInit {
     (error: any) => {
       let status = error.status;
       if ([401, 403].includes(status)) {
-        this.router.navigate(['']);
+        this.router.navigate(['auth']);
       } else {
         alert("Error: " + status);
       }
@@ -205,7 +205,7 @@ export class SessionComponent implements OnInit {
     (error: any) => {
       let status = error.status;
       if ([401, 403].includes(status)) {
-        this.router.navigate(['']);
+        this.router.navigate(['auth']);
       } else {
         alert("Error: " + status);
       }

@@ -12,7 +12,8 @@ import { SessionComponent } from './session/session.component';
 import { TournComponent } from './tourn/tourn.component';
 
 const routes: Routes = [
-  { path: '', component: AuthComponent },
+  { path: '', component: MapComponent },
+  { path: 'auth', component: AuthComponent },
   { path: 'redirect/:t/:u/:s', component: AuthComponent },
   { path: 'redirect/:t', component: AuthComponent },
   { path: 'reg', component: RegComponent },
