@@ -13,7 +13,7 @@ import { TournComponent } from './tourn/tourn.component';
 
 const routes: Routes = [
   { path: '', component: MapComponent },
-  { path: 'auth', component: AuthComponent },
+  { path: 'login', component: AuthComponent },
   { path: 'redirect/:t/:u/:s', component: AuthComponent },
   { path: 'redirect/:t', component: AuthComponent },
   { path: 'reg', component: RegComponent },
