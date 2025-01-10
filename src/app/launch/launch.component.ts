@@ -46,9 +46,7 @@ export class LaunchComponent implements OnInit {
     this.timecontrol = new Array<TimeControl>();
     this.timecontrol_id = 0;
     this.games = new Array<Game>();    
-    this.curr_game = null;
     this.variants = new Array<Game>();
-    this.curr_var = null;
     this.styles = new Array<Style>();
     this.curr_style = null;
     this.player_num = 1;
@@ -61,6 +59,8 @@ export class LaunchComponent implements OnInit {
     this.start_game = activateRoute.snapshot.params['g'];
     this.start_var = activateRoute.snapshot.params['v'];
     this.start_setup = activateRoute.snapshot.params['s'];
+    this.curr_game = this.start_game;
+    this.curr_var = this.start_var;
   }
 
   ngOnInit(): void {
@@ -89,6 +89,7 @@ export class LaunchComponent implements OnInit {
   }
 
   public isAi(): boolean {
+    let f = false;
     const g = this.games.filter((it: Game) => { return it.id == this.curr_game; });
     if (g.length > 0) {
       if (g[0].no_ai) {
@@ -99,7 +100,9 @@ export class LaunchComponent implements OnInit {
         }
       }
       if (g[0].external_ai) return true;
-      if (g[0].bots) return this.checkBots(g[0].bots);
+      if (g[0].bots) {
+         f = this.checkBots(g[0].bots);
+      } 
     }
     const v = this.variants.filter((it: Game) => { return it.id == this.curr_var; });
     if (v.length > 0) {
@@ -109,11 +112,14 @@ export class LaunchComponent implements OnInit {
           this.ai_selected = false;
           return false;
         }
+        if (v[0].no_ai == '0') {
+          return false;
+        }
       }
       if (v[0].external_ai) return true;
       if (v[0].bots) return this.checkBots(v[0].bots);
     }
-    return false;
+    return f;
   }
 
   public getPlayers() {
